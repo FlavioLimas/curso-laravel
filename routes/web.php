@@ -35,10 +35,28 @@ Route::get('/', function () {
             ->get();
     }
 
+    function inserirDadoNaTabela () {
+        $user           = new \App\User();
+        $user->name     = 'Flavio Lima';
+        $user->email    = 'flaviolima.s@live.com';
+        $user->password = bcrypt('123456');
+        $user->save();
+    }
+
+    function alterarDadoNaTabela ($id) {
+        $user           = \App\User::find($id);
+        $user->name     = 'Flavio Lima Edited';
+        $user->email    = 'flaviolima.s@live.com Edited';
+        $user->password = bcrypt('123456');
+        $user->save();
+    }
+
     // $users = opcaoSqlPersonalisado();
     // $users = selecionarTodosDadosTable();
-    $users = retornarTodosUsuariosClasse();
-    dd($users);
+    // $users = retornarTodosUsuariosClasse();
+    // dd($users);
+    // inserirDadoNaTabela();
+    alterarDadoNaTabela(31);
     return view('welcome');
 });
 
