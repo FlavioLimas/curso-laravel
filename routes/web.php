@@ -56,7 +56,7 @@ Route::get('/', function () {
     // $users = retornarTodosUsuariosClasse();
     // dd($users);
     // inserirDadoNaTabela();
-    alterarDadoNaTabela(31);
+    // alterarDadoNaTabela(31);
     return view('welcome');
 });
 
