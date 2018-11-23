@@ -12,6 +12,33 @@
 */
 
 Route::get('/', function () {
+
+    function opcaoSqlPersonalisado () {
+        $sql = 'SELECT * FROM users WHERE id = ?';
+        $users = \DB::select($sql, [4]);
+        return $users;
+    }
+
+    function selecionarTodosDadosTable () {
+        return \DB::table('users')
+            ->where('id', 4)
+            ->select('id', 'name')
+            // ->first();
+            // ->get();
+            ->toSql();
+    }
+
+    function retornarTodosUsuariosClasse () {
+        // return \App\User::all();
+        return \App\User::where('id', 1)
+            ->select('id', 'name')
+            ->get();
+    }
+
+    // $users = opcaoSqlPersonalisado();
+    // $users = selecionarTodosDadosTable();
+    $users = retornarTodosUsuariosClasse();
+    dd($users);
     return view('welcome');
 });
 
