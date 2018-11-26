@@ -13,13 +13,15 @@
 
 Route::get('/', function () {
 
-    function opcaoSqlPersonalisado () {
+    function opcaoSqlPersonalisado ()
+    {
         $sql = 'SELECT * FROM users WHERE id = ?';
         $users = \DB::select($sql, [4]);
         return $users;
     }
 
-    function selecionarTodosDadosTable () {
+    function selecionarTodosDadosTable ()
+    {
         return \DB::table('users')
             ->where('id', 4)
             ->select('id', 'name')
@@ -28,14 +30,16 @@ Route::get('/', function () {
             ->toSql();
     }
 
-    function retornarTodosUsuariosClasse () {
+    function retornarTodosUsuariosClasse ()
+    {
         // return \App\User::all();
         return \App\User::where('id', 1)
             ->select('id', 'name')
             ->get();
     }
 
-    function inserirDadoNaTabela () {
+    function inserirDadoNaTabela ()
+    {
         $user           = new \App\User();
         $user->name     = 'Flavio Lima';
         $user->email    = 'flaviolima.s@live.com';
@@ -43,7 +47,19 @@ Route::get('/', function () {
         $user->save();
     }
 
-    function alterarDadoNaTabela ($id) {
+    function createUserData ($userData)
+    {
+        $user = new \App\User();
+        $user->create($userData);
+    }
+
+    function updateUserData ($userData)
+    {
+        $user = \App\User::find(32);
+        $user->update($userData);
+    }
+    function alterarDadoNaTabela ($id)
+    {
         $user           = \App\User::find($id);
         $user->name     = 'Flavio Lima Edited';
         $user->email    = 'flaviolima.s@live.com Edited';
@@ -57,6 +73,14 @@ Route::get('/', function () {
     // dd($users);
     // inserirDadoNaTabela();
     // alterarDadoNaTabela(31);
+
+    $userData = [
+        'name'       => 'Usuario Novo Edited',
+        // 'email'     => 'email@gmail.com',
+        // 'password'  =>bcrypt('123456')
+    ];
+    // createUserData($userData);
+    // updateUserData($userData);
     return view('welcome');
 });
 
