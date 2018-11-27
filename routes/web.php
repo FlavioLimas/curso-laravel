@@ -134,3 +134,14 @@ Route::prefix('products')->name('products_')->group(function(){
     // ->name('products_single)
 
 });
+
+// Chamada de rota para a view e passagem de parametros
+Route::view('/view', 'view', ['name' => 'Flavio Lima feshow']);
+
+// Passagem de parametro na URL não obrigatorio
+Route::get('show/{name?}/{sobrenome?}', function($name = null, $sobrenome = null){
+    if (is_null($name)){
+        return 'Informe um nome para exibição';
+    }
+    return $name . ' ' . $sobrenome;
+});
