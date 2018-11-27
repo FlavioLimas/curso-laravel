@@ -107,5 +107,19 @@ Route::get('/hello/{name}', function ($name) {
 Route::get('users/{id}', 'Test\UserController@show');
 Route::post('/users', 'Test\UserController@save');*/
 
-Route::resource('/users', 'Test\UserController');
-Route::resource('products', 'Test\ProductController');
+// Resources
+// Route::resource('/users', 'Test\UserController');
+// Route::resource('products', 'Test\ProductController');
+
+/**
+ * Route Prefix group
+ */
+Route::prefix('products')->group(function(){
+    Route::get('/', function(){
+        return 'Produtos Index';
+    });
+
+    Route::get('/1', function(){
+        return 'Produtos 1';
+    });
+});
