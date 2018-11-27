@@ -103,6 +103,9 @@ Route::get('/hello/{name}', function ($name) {
 });
 
 // Users
-Route::get('/users', 'Test\UserController@index');
+/*Route::get('/users', 'Test\UserController@index');
 Route::get('users/{id}', 'Test\UserController@show');
-Route::post('/users', 'Test\UserController@save');
+Route::post('/users', 'Test\UserController@save');*/
+
+Route::resource('/users', 'Test\UserController');
+Route::resource('products', 'Test\ProductController');
