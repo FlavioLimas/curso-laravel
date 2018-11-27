@@ -113,6 +113,11 @@ Route::post('/users', 'Test\UserController@save');*/
 // Route::resource('/users', 'Test\UserController');
 // Route::resource('products', 'Test\ProductController');
 
+Route::namespace('Test')->group(function(){
+    Route::get('users/{id}', 'UserController@show');
+    Route::get('prod', 'ProductController@index');
+});
+
 /**
  * Route Prefix group com apilido para rota
  */
