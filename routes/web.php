@@ -66,6 +66,16 @@ Route::get('/', function () {
         $user->password = bcrypt('123456');
         $user->save();
     }
+    function deletarDadoNaTabela ($id)
+    {
+        $user = \App\User::find($id);
+        $user->delete();
+    }
+    function deletarDadoOpcao ($ids)
+    {
+        $user = \App\User::whereIn('id', $ids);
+        $user->delete();
+    }
 
     // $users = opcaoSqlPersonalisado();
     // $users = selecionarTodosDadosTable();
@@ -74,13 +84,15 @@ Route::get('/', function () {
     // inserirDadoNaTabela();
     // alterarDadoNaTabela(31);
 
-    $userData = [
-        'name'       => 'Usuario Novo Edited',
-        // 'email'     => 'email@gmail.com',
-        // 'password'  =>bcrypt('123456')
-    ];
+    /*$userData = [
+        'name' => 'Usuario Novo Edited',
+        'email' => 'email@gmail.com',
+        'password' =>bcrypt('123456')
+    ];*/
     // createUserData($userData);
     // updateUserData($userData);
+    // deletarDadoNaTabela(32);
+    // deletarDadoOpcao([28,29]);
     return view('welcome');
 });
 
@@ -89,3 +101,8 @@ Route::get('/hello/{name}', function ($name) {
     // compact — Cria um array contendo variáveis e seus valores REF http://php.net/manual/pt_BR/function.compact.php
     return view('hello', compact('name'));
 });
+
+// Users
+Route::get('/users', 'UserController@index');
+Route::get('users/{id}', 'UserController@show');
+Route::post('/users', 'UserController@save');
