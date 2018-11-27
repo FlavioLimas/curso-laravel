@@ -116,12 +116,16 @@ Route::post('/users', 'Test\UserController@save');*/
 /**
  * Route Prefix group com apilido para rota
  */
-Route::prefix('products')->group(function(){
-    Route::get('/', function(){
+Route::prefix('products')->name('products_')->group(function(){
+
+    Route::get('/ok', function(){
         return 'Produtos Index';
-    })->name('products_index');
+    })->name('index');
+    // ->name('products_index')
 
     Route::get('/1', function(){
         return 'Produtos 1';
-    })->name('products_single');
+    })->name('single');
+    // ->name('products_single)
+
 });
