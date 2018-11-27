@@ -99,7 +99,9 @@ Route::get('/', function () {
 Route::get('/hello/{name}', function ($name) {
     // return view('hello', ['name' => $name]);
     // compact — Cria um array contendo variáveis e seus valores REF http://php.net/manual/pt_BR/function.compact.php
-    return view('hello', compact('name'));
+    // return view('hello', compact('name'));
+    // exemplo de redirect ao acessar a rota
+    return redirect()->route('products_index');
 });
 
 // Users
@@ -112,14 +114,14 @@ Route::post('/users', 'Test\UserController@save');*/
 // Route::resource('products', 'Test\ProductController');
 
 /**
- * Route Prefix group
+ * Route Prefix group com apilido para rota
  */
 Route::prefix('products')->group(function(){
     Route::get('/', function(){
         return 'Produtos Index';
-    });
+    })->name('products_index');
 
     Route::get('/1', function(){
         return 'Produtos 1';
-    });
+    })->name('products_single');
 });
