@@ -22,6 +22,9 @@
     <div class="content">
         <div class="title m-b-md">
             Hello, {{$name}}
+
+            <hr>
+            @include('includes/any')
         </div>
     </div>
 @endsection
