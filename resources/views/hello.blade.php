@@ -22,9 +22,25 @@
     <div class="content">
         <div class="title m-b-md">
             Hello, {{$name}}
-
             <hr>
-            @include('includes/any')
+            @if($name == 'Teste')
+                @include('includes/any')
+            @elseif($name == 'Flavio')
+                <h1>{{$name}}</h1>
+            @else
+                <h1>Nenhum Arquivo Incluído</h1>
+            @endif
+            <hr>
+            @if(isset($name))
+                <h2>Testando isset</h2>
+            @endif
+            <!-- Ou nessa notação -->
+            @isset($name)
+                <h2>Testando isset 2</h2>
+            @endisset
+            @empty($name)
+                <h2>Testando isset</h2>
+            @endempty
         </div>
     </div>
 @endsection
