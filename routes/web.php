@@ -99,9 +99,9 @@ Route::get('/', function () {
 Route::get('/hello/{name}', function ($name) {
     // return view('hello', ['name' => $name]);
     // compact — Cria um array contendo variáveis e seus valores REF http://php.net/manual/pt_BR/function.compact.php
-    // return view('hello', compact('name'));
+    return view('hello', compact('name'));
     // exemplo de redirect ao acessar a rota
-    return redirect()->route('products_index');
+    // return redirect()->route('products_index');
 });
 
 // Users
