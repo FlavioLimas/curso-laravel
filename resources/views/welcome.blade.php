@@ -36,8 +36,16 @@
         @for($i = 0; $i <= 10; $i++)
             {{$i}}
         @endfor <hr>
+        @php
+            $users = [
+                ['name' => 'Flavio', 'email' => 'flaviolima.s@live.com'],
+                ['name' => 'Flavio 2', 'email' => 'flaviolima.s2@live.com'],
+                ['name' => 'Flavio 3', 'email' => 'flaviolima.s3@live.com']
+            ];
+        @endphp
         @foreach($users as $user)
             {{$user['name']}} - {{$user['email']}} <br>
         @endforeach
+        <hr>
     </div>
 @endsection
