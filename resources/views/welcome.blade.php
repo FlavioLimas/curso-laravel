@@ -32,5 +32,12 @@
             <a href="https://forge.laravel.com">Forge</a>
             <a href="https://github.com/laravel/laravel">GitHub</a>
         </div>
+        <hr>
+        @for($i = 0; $i <= 10; $i++)
+            {{$i}}
+        @endfor <hr>
+        @foreach($users as $user)
+            {{$user['name']}} - {{$user['email']}} <br>
+        @endforeach
     </div>
 @endsection

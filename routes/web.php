@@ -93,7 +93,13 @@ Route::get('/', function () {
     // updateUserData($userData);
     // deletarDadoNaTabela(32);
     // deletarDadoOpcao([28,29]);
-    return view('welcome');
+    // Usuários para manipular na view
+    $users = [
+        ['name' => 'Flavio', 'email' => 'flaviolima.s@live.com'],
+        ['name' => 'Flavio 2', 'email' => 'flaviolima.s2@live.com'],
+        ['name' => 'Flavio 3', 'email' => 'flaviolima.s3@live.com']
+    ];
+    return view('welcome', compact('users'));
 });
 
 Route::get('/hello/{name}', function ($name) {
