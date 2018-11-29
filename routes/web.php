@@ -138,7 +138,9 @@ Route::prefix('products')->name('products_')->group(function(){
 });
 
 // Chamada de rota para a view e passagem de parametros
-Route::view('/view', 'view', ['name' => 'Flavio Lima feshow']);
+// Route::view('/view', 'view', ['name' => 'Flavio Lima feshow'])->middleware('test');
+Route::view('/view', 'view', ['name' => 'Flavio Lima feshow'])->middleware('auth');
+
 
 // Passagem de parametro na URL não obrigatorio
 Route::get('show/{name?}/{sobrenome?}', function($name = null, $sobrenome = null){

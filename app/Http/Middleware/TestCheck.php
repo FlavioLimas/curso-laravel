@@ -15,8 +15,12 @@ class TestCheck
      */
     public function handle($request, Closure $next)
     {
-        if($request->has('id')){
-            dd('Não Passou no Middleware');
+        // $id = $request->has('id', null);
+        // $id = $request->query('id', null);
+        $id = $request->get('id', null);
+        if(is_null($id)) {
+            // dd('Não Passou no Middleware');
+            return redirect('/');
         }
         return $next($request);
     }
