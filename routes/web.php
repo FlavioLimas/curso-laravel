@@ -139,7 +139,23 @@ Route::prefix('products')->name('products_')->group(function(){
 
 // Chamada de rota para a view e passagem de parametros
 // Route::view('/view', 'view', ['name' => 'Flavio Lima feshow'])->middleware('test');
-Route::view('/view', 'view', ['name' => 'Flavio Lima feshow'])->middleware('auth');
+
+// Opção para chamada do middleware diretamente sem que o mesmo estaja declarado no Kernel.php
+// Route::view('/view', 'view', ['name' => 'Flavio Lima middleware'])->middleware(\App\Http\Middleware\TestCheck::class);
+
+// É possível chamar mais de um middleware conforme exemplo abaixo
+// Route::view('view', 'view', ['name' => 'Flavio Lima middleware'])->middleware('auth', 'test');
+
+//  É possível definir para um grupo de rotas determinados middleware conforme exemplo
+Route::group(['middleware' => ['test']], function(){
+
+    Route::get('middle', function() { return 'Middle'; });
+
+    Route::get('middle/2', function() { return 'Middle 2'; });
+
+});
+// A chamada do middleware padrão auth permite a validação da autenticação padrão do Laravel
+// Route::view('/view', 'view', ['name' => 'Flavio Lima feshow'])->middleware('auth');
 
 
 // Passagem de parametro na URL não obrigatorio
