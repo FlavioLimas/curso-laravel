@@ -17,12 +17,20 @@ class UserController extends Controller
 
     }
 
-    public function show($id)
+    public function show($id, $request)
     {
 
-        $users = User::findOrFail($id);
+        // $users = User::findOrFail($id);
 
-        return $users;
+        // return $users;
+
+        $nome = $request->query('name');
+        print $nome;
+
+        return response('Hello Wold', 200)
+            ->withHeaders(['Content-Type' => 'text/plain']); // Declarando headers num array
+            // ->header('Content-Type', 'text/plain')
+            // ->header('Content-Type', 'application/json');
 
     }
 }
