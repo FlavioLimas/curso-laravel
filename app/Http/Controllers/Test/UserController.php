@@ -17,8 +17,17 @@ class UserController extends Controller
 
     }
 
-    public function show($id, $request)
+    public function show($id)
     {
+
+        // A função request() retorna todos os dados da requisição
+        $request = request();
+        // $header = $request->headers->all();
+
+        // Pegando um header especifico
+        // $header = $request->header('user-agent'); /* ou */
+        $header = $request->headers->get('user-agent');
+        dd($header);
 
         // $users = User::findOrFail($id);
 
